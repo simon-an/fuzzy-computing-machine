@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+
+import { LayoutingModule } from '~layout/layout.module';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserLandingPageComponent } from './user-landing-page/user-landing-page.component';
@@ -9,7 +12,9 @@ import { UserLandingPageComponent } from './user-landing-page/user-landing-page.
   declarations: [UserLandingPageComponent],
   imports: [
     CommonModule,
-    UserRoutingModule
+    LayoutingModule,
+    UserRoutingModule,
+    MatListModule
   ]
 })
 export class UserModule { }

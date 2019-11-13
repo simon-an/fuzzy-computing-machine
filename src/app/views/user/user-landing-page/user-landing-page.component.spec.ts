@@ -1,6 +1,11 @@
+import { MatListModule } from '@angular/material/list';
+import { CommonModule } from '@angular/common';
+import { LayoutingModule } from '~layout/layout.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { UserLandingPageComponent } from './user-landing-page.component';
+import { HeaderWithSidenavComponent } from '~layout/header-with-sidenav/header-with-sidenav.component';
 
 describe('UserLandingPageComponent', () => {
   let component: UserLandingPageComponent;
@@ -8,7 +13,13 @@ describe('UserLandingPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserLandingPageComponent ]
+      declarations: [ UserLandingPageComponent, HeaderWithSidenavComponent ],
+      imports: [
+        CommonModule,
+        LayoutingModule,
+        NoopAnimationsModule,
+        MatListModule,
+      ],
     })
     .compileComponents();
   }));
