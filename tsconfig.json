@@ -2,6 +2,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "~core/*": ["src/app/core/*"],
+      "~safe/*": ["src/app/safe/*"],
+      "~layout/*": ["src/app/layout/*"],
+      "~store/*": ["src/app/store/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -22,5 +28,6 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  "path-intellisense.extensionOnImport": true,
 }
