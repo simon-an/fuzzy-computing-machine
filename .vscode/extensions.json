@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "pkief.material-icon-theme",
+        "esbenp.prettier-vscode",
+        "angular.ng-template",
+        "cyrilletuzi.angular-schematics",
+        "ng-42.ng-fortytwo-vscode-extension",
+        "mikael.angular-beastcode",
+        "loiane.angular-extension-pack"
+
+    ],
+    "unwantedRecommendations": []
+  }
