@@ -95,6 +95,13 @@
               "src/styles.scss"
             ],
             "scripts": []
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromiumHeadless,ChromeHeadlessCI,ChromeCanaryHeadless"
+            }
           }
         },
         "lint": {
@@ -123,6 +130,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ngx-safe"
 }
