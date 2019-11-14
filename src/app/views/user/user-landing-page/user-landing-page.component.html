@@ -1,10 +1,19 @@
 <cool-header-with-sidenav>
   <ng-container navlist>
     <mat-nav-list>
-      <a mat-list-item routerLink="/home" routerLinkActive="active"
-        >Back to home</a
-      >
+      <a mat-list-item routerLink="/home" routerLinkActive="active">Home</a>
+      <mat-divider></mat-divider>
+      <ng-container *ngIf="safeId$ | async as safeId">
+        <a [routerLink]="'safes/' + safeId" mat-list-item *ngIf="safeId">
+          <mat-icon mat-list-icon>work_outline</mat-icon>
+          <p mat-line>Your Safe</p>
+        </a>
+      </ng-container>
     </mat-nav-list>
   </ng-container>
-  <p body>user landingpage works</p>
+  <!-- Content Start -->
+  <ng-container body>
+    <p>Welcome to Cool Safe App Mr Holmes.</p>
+  </ng-container>
+  <!-- Content End -->
 </cool-header-with-sidenav>

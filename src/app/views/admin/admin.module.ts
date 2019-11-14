@@ -24,6 +24,6 @@ import { SafeRowComponent } from './components/safe-row/safe-row.component';
     MatIconModule,
     MatTooltipModule,
   ],
-  exports: [SafeListElementComponent, SafeRowComponent]
+  exports: []
 })
 export class AdminModule { }

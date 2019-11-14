@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { SafeListElementComponent } from './../../container/safe-list-element/safe-list-element.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -9,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { HeaderWithSidenavComponent } from '~layout/header-with-sidenav/header-with-sidenav.component';
 import { SafeListComponent } from '../../container/safe-list/safe-list.component';
 import { SafeRowComponent } from '../../components/safe-row/safe-row.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('AdminLandingPageComponent', () => {
   let component: AdminLandingPageComponent;
@@ -22,6 +24,8 @@ describe('AdminLandingPageComponent', () => {
         LayoutingModule,
         NoopAnimationsModule,
         MatListModule,
+        RouterTestingModule,
+        MatTooltipModule,
       ],
     })
       .compileComponents();

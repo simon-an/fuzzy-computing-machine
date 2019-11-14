@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'cool-user-landing-page',
@@ -7,6 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserLandingPageComponent implements OnInit {
+
+  safeId$ = of(1);
 
   constructor() { }
 

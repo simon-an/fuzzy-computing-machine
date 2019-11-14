@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatListModule } from '@angular/material/list';
 
 import { SafeRowComponent } from './safe-row.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('SafeRowComponent', () => {
   let component: SafeRowComponent;
@@ -11,7 +12,7 @@ describe('SafeRowComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SafeRowComponent],
-      imports: [MatListModule, NoopAnimationsModule]
+      imports: [MatListModule, NoopAnimationsModule, MatTooltipModule]
     })
       .compileComponents();
   }));

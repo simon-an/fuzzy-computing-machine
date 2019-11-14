@@ -5,6 +5,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SafeListComponent } from './safe-list.component';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('SafeListComponent', () => {
   let component: SafeListComponent;
@@ -13,7 +14,7 @@ describe('SafeListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SafeListComponent, SafeListElementComponent, SafeRowComponent],
-      imports: [MatListModule, NoopAnimationsModule]
+      imports: [MatListModule, NoopAnimationsModule, MatTooltipModule]
     })
       .compileComponents();
   }));
