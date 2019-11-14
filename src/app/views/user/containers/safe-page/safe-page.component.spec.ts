@@ -1,3 +1,5 @@
+import { AddSafeItemDialogComponent } from './../add-safe-item-dialog/add-safe-item-dialog.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { SafeService } from '~core/services';
 import { Safe } from '~core/model';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -19,18 +21,30 @@ describe('SafePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SafePageComponent],
-      imports: [MatIconModule, SafeModule, LayoutingModule, MatListModule, NoopAnimationsModule, RouterTestingModule],
-      providers: [{
-        // provide: ActivatedRoute, useValue: {
-        //   paramMap: from([{ id: 1 }]),
-        //   params: from([{ id: 1 }]),
-        //   snapshot: {}
-        // }
-        provide: ActivatedRoute, useClass: ActivatedRouteMock
-      }]
-    })
-      .compileComponents();
+      declarations: [SafePageComponent, AddSafeItemDialogComponent],
+      imports: [
+        MatIconModule,
+        SafeModule,
+        LayoutingModule,
+        MatListModule,
+        NoopAnimationsModule,
+        RouterTestingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatDialogModule
+      ],
+      providers: [
+        {
+          // provide: ActivatedRoute, useValue: {
+          //   paramMap: from([{ id: 1 }]),
+          //   params: from([{ id: 1 }]),
+          //   snapshot: {}
+          // }
+          provide: ActivatedRoute,
+          useClass: ActivatedRouteMock,
+        },
+      ],
+    }).compileComponents();
 
     const service: SafeService = TestBed.inject(SafeService);
     spy = spyOn(service, 'getSafe').and.returnValue(of({ id: '1' } as Safe));
@@ -49,10 +63,13 @@ describe('SafePageComponent', () => {
 });
 
 import { convertToParamMap } from '@angular/router';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export class ActivatedRouteMock {
-  public paramMap = of(convertToParamMap({
-    id: 'abc123',
-  }));
+  public paramMap = of(
+    convertToParamMap({
+      id: 'abc123',
+    }),
+  );
 }

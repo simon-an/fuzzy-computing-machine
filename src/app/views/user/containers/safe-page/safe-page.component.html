@@ -8,6 +8,11 @@
   </ng-container>
   <!-- Content Start -->
   <ng-container body>
+    <mat-toolbar>
+      <button mat-mini-fab color="primary" (click)="addSafeItem()">
+        <mat-icon aria-label="add new Safe Items">add</mat-icon>
+      </button>
+    </mat-toolbar>
     <cool-item-list [items]="items$ | async"></cool-item-list>
   </ng-container>
   <!-- Content End -->

@@ -27,5 +27,5 @@ describe('ItemListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  }); 
+  });
 });
