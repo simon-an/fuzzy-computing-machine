@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <h3 mat-subheader>Safes</h3>
+  <cool-safe-list-element
+    *ngFor="let safe of (safes$ | async)"
+    [matTooltip]="safe.id"
+    [safe]="safe"
+  ></cool-safe-list-element>
+</mat-nav-list>

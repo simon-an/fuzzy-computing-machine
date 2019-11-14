@@ -38,14 +38,14 @@ describe('SafeService', () => {
   it('test safe id 0', (done: DoneFn) => {
     const service: SafeService = TestBed.inject(SafeService);
     service.getSafe('0').subscribe(safe => {
-      expect(safe).toBeUndefined();
+      expect(safe).toBeNull();
       done();
     });
   });
   it('test safe id 3', (done: DoneFn) => {
     const service: SafeService = TestBed.inject(SafeService);
     service.getSafe('3').subscribe(safe => {
-      expect(safe).toBeUndefined();
+      expect(safe).toBeNull();
       done();
     });
   });

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Safe, SafeItem } from '../model';
-import { Observable, Subject, BehaviorSubject, AsyncSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, AsyncSubject, from } from 'rxjs';
+import { first, flatMap, materialize, dematerialize} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,18 @@ export class SafeService {
   private safes: BehaviorSubject<Safe[]> = new BehaviorSubject<Safe[]>([]);
   private items: Map<string, AsyncSubject<SafeItem[]>> = new Map<string, AsyncSubject<SafeItem[]>>();
 
+  // getSafe(safeId: string): Observable<Safe> {
+  //   return this.safes.asObservable().pipe(map((safes1: Safe[]) => safes1.find(safe => safe.id === safeId)));
+  // }
+
   getSafe(safeId: string): Observable<Safe> {
-    return this.safes.asObservable().pipe(map((safes1: Safe[]) => safes1.find(safe => safe.id === safeId)));
+    return this.safes.asObservable()
+      .pipe(
+        flatMap(safes => from(safes).pipe(materialize())),
+        dematerialize(),
+        first(safe => safe.id === safeId, null),
+
+      );
   }
 
   getSafes(): Observable<Safe[]> {
