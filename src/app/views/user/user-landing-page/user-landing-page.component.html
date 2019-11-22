@@ -3,7 +3,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerLinkActive="active">Home</a>
       <mat-divider></mat-divider>
-      <ng-container *ngIf="safeId$ | async as safeId">
+      <ng-container *ngIf="(safeId$ | async) as safeId">
         <a [routerLink]="'safes/' + safeId" mat-list-item *ngIf="safeId">
           <mat-icon mat-list-icon>work_outline</mat-icon>
           <p mat-line>Your Safe</p>

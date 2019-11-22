@@ -1,13 +1,12 @@
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AddSafeItemDialogComponent } from './add-safe-item-dialog.component';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { SafeItemFormComponent } from '../../components/safe-item-form/safe-item-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SafeItemFormComponent } from '../../components/safe-item-form/safe-item-form.component';
+import { AddSafeItemDialogComponent } from './add-safe-item-dialog.component';
 
 describe('AddSafeItemDialogComponent', () => {
   let component: AddSafeItemDialogComponent;
@@ -20,7 +19,14 @@ describe('AddSafeItemDialogComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AddSafeItemDialogComponent, SafeItemFormComponent],
-      imports: [MatDialogModule, FormsModule, ReactiveFormsModule, NoopAnimationsModule, MatFormFieldModule, MatInputModule],
+      imports: [
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule
+      ],
       providers: [
         {
           provide: MatDialogRef,

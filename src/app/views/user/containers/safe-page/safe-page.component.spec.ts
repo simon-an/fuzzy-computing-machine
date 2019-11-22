@@ -1,18 +1,20 @@
-import { AddSafeItemDialogComponent } from './../add-safe-item-dialog/add-safe-item-dialog.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { SafeService } from '~core/services';
-import { Safe } from '~core/model';
-import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { Safe } from '~core/model';
+import { SafeService } from '~core/services';
 import { LayoutingModule } from './../../../../layout/layout.module';
 import { SafeModule } from './../../../../safe/safe.module';
-import { MatIconModule } from '@angular/material/icon';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AddSafeItemDialogComponent } from './../add-safe-item-dialog/add-safe-item-dialog.component';
 import { SafePageComponent } from './safe-page.component';
-import { of, from } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SafePageComponent', () => {
   let component: SafePageComponent;
@@ -31,7 +33,8 @@ describe('SafePageComponent', () => {
         RouterTestingModule,
         MatToolbarModule,
         MatButtonModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientTestingModule
       ],
       providers: [
         {
@@ -41,9 +44,9 @@ describe('SafePageComponent', () => {
           //   snapshot: {}
           // }
           provide: ActivatedRoute,
-          useClass: ActivatedRouteMock,
-        },
-      ],
+          useClass: ActivatedRouteMock
+        }
+      ]
     }).compileComponents();
 
     const service: SafeService = TestBed.inject(SafeService);
@@ -62,14 +65,10 @@ describe('SafePageComponent', () => {
   }));
 });
 
-import { convertToParamMap } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-
 export class ActivatedRouteMock {
   public paramMap = of(
     convertToParamMap({
-      id: 'abc123',
-    }),
+      id: 'abc123'
+    })
   );
 }
