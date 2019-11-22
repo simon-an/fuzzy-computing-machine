@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm" coolAdminEmailValidator>
+    <mat-form-field>
+      <mat-select placeholder="Role" #roleInput [(value)]="state.role" matInput name="role" [(ngModel)]="state.role">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        email
+        required
+        name="email"
+        [(ngModel)]="state.email"
+        matInput
+        placeholder="Email"
+        #email="ngModel"
+        autocomplete="section-register email"
+        [ngModelOptions]="{ updateOn: 'blur' }"
+      />
+      <mat-error *ngIf="email?.errors?.userExists">
+        user does not exists
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.email">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.required"> Email is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <button [disabled]="!registerForm.valid" mat-button color="primary">
+      Register
+    </button>
+    <mat-error *ngIf="!!registerForm.errors?.specialAdmin && (email.touched || email.dirty)">
+      Email address domain for admins are restricted.
+    </mat-error>
+  </form>

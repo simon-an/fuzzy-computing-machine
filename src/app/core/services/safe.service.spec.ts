@@ -1,11 +1,24 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-
-import { SafeService } from './safe.service';
-import { filter, delay } from 'rxjs/operators';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { delay, filter } from 'rxjs/operators';
 import { SafeItem } from '~core/model';
+import { SafeInMemDataService } from './in-memory-safe.service';
+import { SafeService } from './safe.service';
 
 describe('SafeService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        HttpClientInMemoryWebApiModule.forRoot(SafeInMemDataService, {
+          delay: 500,
+          dataEncapsulation: false,
+          passThruUnknownUrl: true
+        })
+      ]
+    }).compileComponents();
+  });
 
   it('should be created', () => {
     const service: SafeService = TestBed.inject(SafeService);
@@ -15,7 +28,7 @@ describe('SafeService', () => {
     const service: SafeService = TestBed.inject(SafeService);
     service.getSafe('1').subscribe(safe => {
       expect(safe.active).toBe(true);
-      expect(safe.activeSince).toEqual(new Date(1999, 1, 1));
+      expect(new Date(safe.activeSince)).toEqual(new Date(Date.UTC(1999, 1, 1)));
       expect(safe.id).toBe('1');
       expect(safe.itemSize).toBe(2);
       expect(safe.value).toBe(999);
@@ -27,7 +40,7 @@ describe('SafeService', () => {
     const service: SafeService = TestBed.inject(SafeService);
     service.getSafe('2').subscribe(safe => {
       expect(safe.active).toBe(true);
-      expect(safe.activeSince).toEqual(new Date(2018, 12, 30));
+      expect(new Date(safe.activeSince)).toEqual(new Date(Date.UTC(2018, 11, 30)));
       expect(safe.id).toBe('2');
       expect(safe.itemSize).toBe(3);
       expect(safe.value).toBe(123);
@@ -38,14 +51,14 @@ describe('SafeService', () => {
   it('test safe id 0', (done: DoneFn) => {
     const service: SafeService = TestBed.inject(SafeService);
     service.getSafe('0').subscribe(safe => {
-      expect(safe).toBeNull();
+      expect(safe).toBeUndefined();
       done();
     });
   });
   it('test safe id 3', (done: DoneFn) => {
     const service: SafeService = TestBed.inject(SafeService);
     service.getSafe('3').subscribe(safe => {
-      expect(safe).toBeNull();
+      expect(safe).toBeUndefined();
       done();
     });
   });
@@ -76,7 +89,7 @@ describe('SafeService', () => {
       .getItems('12342453452343638234')
       .pipe(delay(2100))
       .subscribe(items => {
-        expect(items).toBeNull();
+        expect(items).toEqual([]);
         done();
       });
   });

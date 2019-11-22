@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
 import { Safe } from '~core/model';
 
 @Component({
@@ -8,13 +13,9 @@ import { Safe } from '~core/model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SafeRowComponent implements OnInit {
+  @Input() safe: Safe;
 
-  @Input()
-  safe: Safe;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
