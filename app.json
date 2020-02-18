@@ -1,0 +1,45 @@
+{
+  "name": "NGX-SAFE",
+  "description": "This app does one little thing, and does it well.",
+  "keywords": [
+    "productivity",
+    "HTML5",
+    "EXAMPLE",
+    "TUTORIAL"
+  ],
+  "website": "",
+  "repository": "https://github.com/simon-an/fuzzy-computing-machine.git",
+  "logo": "",
+  "success_url": "/welcome",
+  "scripts": {
+  },
+  "env": {
+    "API_APP_NAME": ""
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-static"
+    }
+  ],
+  "environments": {
+    "review": {
+      "env": {
+        "API_APP_NAME": "ngx-safe-${HEROKU_BRANCH}"
+      },
+      "addons": []
+    },
+    "test": {
+    }
+  }
+}
